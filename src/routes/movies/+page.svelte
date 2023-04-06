@@ -17,8 +17,8 @@
 
 	const search = async () => {
 		try {
-			const response = await fetch(`https://api.example.com/search?q=${query}`);
-			results = response.data;
+			const response = await fetch(`https://api.example.com/search?q=${search_query}`);
+			search_results = response.data;
 		} catch (error) {
 			console.error(error);
 		}
@@ -30,19 +30,21 @@
 </script>
 
 <div>
-	<div class="grid grid-cols-3 gap-4 mb-8">
+	<div class="grid grid-cols-3 gap-2 mb-8">
 		<div class="col-span-1 col-start-2 row-start-6 flex items-center justify-center">
-			<input
-				type="text"
-				class="w-full p-4 rounded shadow-md"
-				placeholder="Search..."
-				bind:value={search_query}
-			/>
-			<button
-				type="button"
-				class="bg-blue-500 text-white font-semibold mx-6 px-4 py-4 rounded hover:text-white hover:bg-blue-600 hover:border-blue-600 focus:ring focus:ring-blue-400 focus:ring-opacity-50 active:bg-blue-700 active:border-blue-700"
-				on:click={search}>Search</button
-			>
+			<form class="flex items-center justify-center mt-4">
+				<input
+					type="text"
+					class="w-full p-4 rounded shadow-md"
+					placeholder="Search for movie"
+					bind:value={search_query}
+				/>
+				<button
+					type="submit"
+					class="bg-blue-500 text-white font-semibold mx-6 px-4 py-4 rounded hover:text-white hover:bg-blue-600 hover:border-blue-600 focus:ring focus:ring-blue-400 focus:ring-opacity-50 active:bg-blue-700 active:border-blue-700"
+					on:click={search}>Search</button
+				>
+			</form>
 		</div>
 	</div>
 
