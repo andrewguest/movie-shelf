@@ -10,9 +10,12 @@
 	// functions
 	async function loadMovieData() {
 		const response = await fetch('http://localhost:8000/movies/');
-		const json = await response.json();
+		const json_data = await response.json();
 
-		return json;
+		// save the response object to sessionStorage
+		sessionStorage.setItem('movieObjects', JSON.stringify(json_data));
+
+		return json_data;
 	}
 
 	const search = async () => {
@@ -25,7 +28,14 @@
 	};
 
 	onMount(async () => {
-		movies_data = await loadMovieData();
+		let stored_movies_data = JSON.parse(sessionStorage.getItem('movieObjects'));
+
+		// if there are movies in sessionStorage
+		if (stored_movies_data !== null) {
+			movies_data = stored_movies_data;
+		} else {
+			movies_data = await loadMovieData();
+		}
 	});
 </script>
 
@@ -41,7 +51,7 @@
 				/>
 				<button
 					type="submit"
-					class="bg-blue-500 text-white font-semibold mx-6 px-4 py-4 rounded hover:text-white hover:bg-blue-600 hover:border-blue-600 focus:ring focus:ring-blue-400 focus:ring-opacity-50 active:bg-blue-700 active:border-blue-700"
+					class="bg-blue-500 text-white font-semibold mx-4 px-4 py-4 rounded hover:text-white hover:bg-blue-600 hover:border-blue-600 focus:ring focus:ring-blue-400 focus:ring-opacity-50 active:bg-blue-700 active:border-blue-700"
 					on:click={search}>Search</button
 				>
 			</form>
@@ -71,7 +81,9 @@
 						</h3>
 						<!-- Create a badge for each genre -->
 						{#each movie.genres as genre}
-							<GenreBadge {genre} />
+							<a href="/movies/{genre}">
+								<GenreBadge {genre} />
+							</a>
 						{/each}
 					</div>
 				</div>
