@@ -1,0 +1,16 @@
+# hidden directories
+.vscode/
+.pytest_cache/
+
+# git
+.git/
+.gitattributes
+
+# node
+node_modules/
+.eslintignore
+.eslintrc.cjs
+.prettierignore
+.prettierrc
+
+README.md
