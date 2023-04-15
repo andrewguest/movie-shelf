@@ -5,3 +5,9 @@ micros:
     src: frontend
     engine: svelte-kit
     primary: true
+  - name: backend
+    src: backend
+    engine: python3.9
+    path: api
+    run: gunicorn app.main:app --workers 4 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0
+    dev: venv/bin/uvicorn app.main:app --reload
