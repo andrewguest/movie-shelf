@@ -7,6 +7,7 @@
   let untouched_movies_data = []; // original, unchanged, list of movies
   let release_years_list = []; // list of release years from the API
   let selected_release_year = null; // currently selected release year
+  let sort_field = 'title_asc'; // current movie property to sort by
 
   // get all movies from the API
   async function loadMovieData() {
@@ -38,9 +39,30 @@
     }
   }
 
+  async function sortAllMoviesByField(sort_field) {
+    if (sort_field !== null) {
+      if (sort_field === 'title_asc') {
+        movies_data = movies_data.sort((a, b) => (a.title > b.title ? 1 : -1));
+      } else if (sort_field === 'title_desc') {
+        movies_data = movies_data.sort((a, b) => (a.title < b.title ? 1 : -1));
+      } else if (sort_field === 'release_year_asc') {
+        movies_data = movies_data.sort((a, b) =>
+          a.release_year > b.release_year ? 1 : -1
+        );
+      } else if (sort_field === 'release_year_desc') {
+        movies_data = movies_data.sort((a, b) =>
+          a.release_year < b.release_year ? 1 : -1
+        );
+      }
+    }
+
+    return movies_data;
+  }
+
   // lifecycle hooks
   onMount(async () => {
     movies_data = await loadMovieData();
+    movies_data = await sortAllMoviesByField(sort_field);
     untouched_movies_data = movies_data;
     release_years_list = await getAllReleaseYears();
   });
@@ -49,11 +71,13 @@
 <div>
   <div class="p-6">
     <!-- Start sort and filter button grid -->
-    <div id="sort-and-filter-grid" class="grid grid-cols-8 gap-4">
+    <div id="sort-and-filter-grid" class="grid grid-cols-8 gap-6">
       <!-- Start "Release Year" filter select box -->
       <form onsubmit="return false;" class="space-y-6 mb-10">
         <div class="space-y-1">
-          <label class="font-medium" for="select">Release Year</label>
+          <label class="font-medium" for="release_year_select"
+            >Release Year</label
+          >
           <select
             class="w-full block border bg-white border-gray-200 rounded px-3 py-2 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
             id="release_year_select"
@@ -69,6 +93,25 @@
         </div>
       </form>
       <!-- End "Release Year" filter select box -->
+      <!-- Start "Sort by" select box -->
+      <form onsubmit="return false;" class="space-y-6 mb-10">
+        <div class="space-y-1">
+          <label class="font-medium" for="sort_by_select">Sort movies by</label>
+          <select
+            class="w-full block border bg-white border-gray-200 rounded px-3 py-2 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+            id="sort_by_select"
+            name="sort_by_select"
+            bind:value={sort_field}
+            on:change={sortAllMoviesByField(sort_field)}
+          >
+            <option value="title_asc">Title (Ascending)</option>
+            <option value="title_desc">Title (Descending)</option>
+            <option value="release_year_asc">Release Year (Ascending)</option>
+            <option value="release_year_desc">Release Year (Descending)</option>
+          </select>
+        </div>
+      </form>
+      <!-- End "Sort by" select box -->
     </div>
     <!-- End sort and filter button grid -->
 
