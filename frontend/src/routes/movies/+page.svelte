@@ -48,24 +48,29 @@
 
 <div>
   <div class="p-6">
-    <form onsubmit="return false;" class="space-y-6 mb-10">
-      <!-- Select Box -->
-      <div class="space-y-1">
-        <label class="font-medium" for="select">Release Year</label>
-        <select
-          class="w-1/6 block border bg-white border-gray-200 rounded px-3 py-2 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
-          id="release_year_select"
-          name="release_year_select"
-          bind:value={selected_release_year}
-          on:change={filterAllMoviesByReleaseYear(selected_release_year)}
-        >
-          <option />
-          {#each release_years_list as year}
-            <option>{year}</option>
-          {/each}
-        </select>
-      </div>
-    </form>
+    <!-- Start sort and filter button grid -->
+    <div id="sort-and-filter-grid" class="grid grid-cols-8 gap-4">
+      <!-- Start "Release Year" filter select box -->
+      <form onsubmit="return false;" class="space-y-6 mb-10">
+        <div class="space-y-1">
+          <label class="font-medium" for="select">Release Year</label>
+          <select
+            class="w-full block border bg-white border-gray-200 rounded px-3 py-2 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+            id="release_year_select"
+            name="release_year_select"
+            bind:value={selected_release_year}
+            on:change={filterAllMoviesByReleaseYear(selected_release_year)}
+          >
+            <option />
+            {#each release_years_list as year}
+              <option>{year}</option>
+            {/each}
+          </select>
+        </div>
+      </form>
+      <!-- End "Release Year" filter select box -->
+    </div>
+    <!-- End sort and filter button grid -->
 
     <!-- Cards in Grid: Movies -->
     <div
