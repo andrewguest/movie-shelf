@@ -70,9 +70,9 @@
 
 <div>
   <div class="p-6">
-    <!-- Start sort and filter button grid -->
+    <!-- START sort and filter button grid -->
     <div id="sort-and-filter-grid" class="grid grid-cols-8 gap-6">
-      <!-- Start "Release Year" filter select box -->
+      <!-- START "Release Year" filter select box -->
       <form onsubmit="return false;" class="space-y-6 mb-10">
         <div class="space-y-1">
           <label class="font-medium" for="release_year_select"
@@ -92,8 +92,8 @@
           </select>
         </div>
       </form>
-      <!-- End "Release Year" filter select box -->
-      <!-- Start "Sort by" select box -->
+      <!-- END "Release Year" filter select box -->
+      <!-- START "Sort by" select box -->
       <form onsubmit="return false;" class="space-y-6 mb-10">
         <div class="space-y-1">
           <label class="font-medium" for="sort_by_select">Sort movies by</label>
@@ -111,9 +111,49 @@
           </select>
         </div>
       </form>
-      <!-- End "Sort by" select box -->
+      <!-- END "Sort by" select box -->
+      <!-- START download button -->
+      <div class="col-end-8 flex justify-center">
+        <a class="" href="/movie_import_template.csv" download>
+          <button
+            type="buttton"
+            class="h-1/2 my-2 px-2 text-space-blue-100 bg-transparent ring-2 ring-space-blue-100 font-semibold rounded hover:ring-4 hover:ring-space-blue-200 focus:ring-2 focus:ring-space-blue-200 focus:ring-opacity-50 active:border-space-blue-300"
+            ><svg
+              class="bi bi-download inline-block w-5 h-5 mr-4"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 16 16"
+              aria-hidden="true"
+              ><path
+                d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"
+              /><path
+                d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"
+              /></svg
+            >CSV template</button
+          >
+        </a>
+      </div>
+      <!-- END download button -->
+      <!-- START import button -->
+      <button
+        type="submit"
+        class="col-end-9 h-1/2 my-2 bg-space-blue-100 text-white font-semibold rounded hover:text-white hover:bg-space-blue-200 hover:border-space-blue-200 focus:ring focus:ring-blue-400 focus:ring-opacity-50 active:bg-space-blue-300 active:border-space-blue-300"
+        ><svg
+          class="bi bi-upload inline-block w-5 h-5 mr-4"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 16 16"
+          aria-hidden="true"
+          ><path
+            d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"
+          /><path
+            d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z"
+          /></svg
+        >Import from CSV</button
+      >
+      <!-- END import button -->
     </div>
-    <!-- End sort and filter button grid -->
+    <!-- END sort and filter button grid -->
 
     <!-- Cards in Grid: Movies -->
     <div
