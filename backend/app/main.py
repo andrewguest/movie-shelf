@@ -2,7 +2,7 @@ import secure
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from routes import movie_router
+from routes import admin_routes, movie_router
 
 
 app = FastAPI(
@@ -29,4 +29,5 @@ async def set_secure_headers(request, call_next):
     return response
 
 
+app.include_router(admin_routes.router)
 app.include_router(movie_router.router)
