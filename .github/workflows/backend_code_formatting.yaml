@@ -1,0 +1,14 @@
+name: Run code format checks
+
+on:
+  pull_request:
+    branches:
+      - main
+      - dev
+
+jobs:
+  black:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: psf/black@stable
