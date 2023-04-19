@@ -1,6 +1,7 @@
 import csv
 
-from fastapi import APIRouter, File, Response, UploadFile
+from fastapi import APIRouter, File, UploadFile
+from fastapi.responses import JSONResponse
 
 from helpers.admin_helpers import validate_uploaded_file
 
@@ -9,7 +10,7 @@ router = APIRouter(tags=["admin"])
 
 
 @router.post("/admin/import")
-async def import_from_csv(response: Response, file: UploadFile = File(...)):
+async def import_from_csv(response: JSONResponse, file: UploadFile = File(...)):
     """Accept a file through a POST request of up to 50MB and
     with certain file extensions
 
@@ -32,9 +33,14 @@ async def import_from_csv(response: Response, file: UploadFile = File(...)):
 
         csv_row_count = len([row for row in reader])
 
-        return {
-            "Imported file": file.filename,
-            "Rows imported from file": csv_row_count,
-        }
+        return JSONResponse(
+            content={
+                "Imported file": file.filename,
+                "Rows imported from file": csv_row_count,
+            },
+            status_code=200,
+        )
     else:
-        return json_response_message
+        # If validation failed then return whatever JSON message the
+        #   validate_uploaded_file() function returned.
+        return JSONResponse(content=json_response_message, status_code=400)
