@@ -1,5 +1,5 @@
 export const load = ({ params }) => {
-    return {
-        genre: params.slug
-    }
-}
+  return {
+    genre: params.slug,
+  };
+};
