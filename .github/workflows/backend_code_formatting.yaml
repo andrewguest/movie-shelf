@@ -1,4 +1,4 @@
-name: Run code format checks
+name: Backend code format checks
 
 on:
   pull_request:
@@ -10,5 +10,7 @@ jobs:
   black:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: psf/black@stable
+      - name: Checkout repo
+        uses: actions/checkout@v3
+      - name: Run black formatter
+        uses: psf/black@stable
