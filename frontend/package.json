@@ -9,8 +9,8 @@
     "test:unit": "vitest",
     "test": "vitest run tests",
     "test:watch": "vitest tests",
-    "lint": "prettier --plugin-search-dir . --tab-width 4 --check . && eslint .",
-    "format": "prettier --plugin-search-dir . --tab-width 4 --write ."
+    "lint": "prettier --plugin-search-dir . --check . && eslint .",
+    "format": "prettier --plugin-search-dir . --write ."
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "^2.0.0",
