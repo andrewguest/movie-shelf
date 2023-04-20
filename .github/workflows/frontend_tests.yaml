@@ -37,3 +37,6 @@ jobs:
 
       - name: Run unit tests
         run: npm run test:unit
+
+      - name: Run tests
+        run: npm run test
