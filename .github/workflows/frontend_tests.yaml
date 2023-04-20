@@ -36,4 +36,4 @@ jobs:
         run: npm run build --if-present
 
       - name: Run unit tests
-        run: npm run test:unitac
+        run: npm run test:unit
