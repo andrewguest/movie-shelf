@@ -1,5 +1,5 @@
 import "@testing-library/jest-dom";
-import { describe, it, expect } from "vitest";
+import { describe, expect } from "vitest";
 import { render, screen } from "@testing-library/svelte";
 
 import page from "src/routes/+page.svelte";
