@@ -277,14 +277,14 @@
 
     <!-- Cards in Grid: Movies -->
     <div
-      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols:4 lg:grid-cols-6 gap-4 lg:gap-8 m-4"
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols:4 lg:grid-cols-5 gap-4 lg:gap-12 m-4"
     >
       {#each movies_data as movie}
         <!-- Movie Card -->
         <div
-          class="flex flex-col rounded-lg shadow-sm bg-white overflow-hidden"
+          class="flex flex-col rounded-lg shadow-lg bg-white overflow-hidden mb-10"
         >
-          <div class="p-5 lg:p-6 grow w-full text-center">
+          <div class=" grow w-full text-center">
             <div class="rounded-md -mx-2.5 -mt-2.5 mb-5 overflow-hidden">
               <a
                 href={movie.poster_url}
@@ -304,11 +304,13 @@
               <span aria-hidden="true" class="grow bg-gray-300 rounded h-0.5" />
             </h3>
             <!-- Create a badge for each genre -->
-            {#each movie.genres as genre}
-              <a href="/movies/{genre}">
-                <GenreBadge {genre} />
-              </a>
-            {/each}
+            <div class="mx-4 mb-4">
+              {#each movie.genres as genre}
+                <a href="/movies/{genre}">
+                  <GenreBadge {genre} />
+                </a>
+              {/each}
+            </div>
           </div>
         </div>
         <!-- END Movie Card -->
