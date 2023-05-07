@@ -12,9 +12,9 @@ export default defineConfig({
     globals: true,
     include: [
       "src/**/*.{test,spec}.{js,ts}",
-      "tests/**/*.test.js",
-      "tests/**/*.tests.js",
-      "tests/**/test*.js",
+      "tests/unit/**/*.test.js",
+      "tests/unit/**/*.tests.js",
+      "tests/unit/**/test*.js",
     ],
   },
 });

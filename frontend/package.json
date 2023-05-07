@@ -7,12 +7,13 @@
     "build": "vite build",
     "preview": "vite preview",
     "test:unit": "vitest",
-    "test": "vitest run tests",
+    "test:integration": "playwright test",
     "test:watch": "vitest tests",
     "lint": "prettier --plugin-search-dir . --check . && eslint .",
     "format": "prettier --plugin-search-dir . --write ."
   },
   "devDependencies": {
+    "@playwright/test": "^1.33.0",
     "@sveltejs/adapter-auto": "^2.0.0",
     "@sveltejs/adapter-node": "^1.2.3",
     "@sveltejs/kit": "^1.15.2",
@@ -20,6 +21,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/svelte": "^3.2.2",
     "autoprefixer": "^10.4.14",
+    "esbuild": "^0.17.14",
     "eslint": "^8.28.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-svelte3": "^4.0.0",
