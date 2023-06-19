@@ -1,5 +1,5 @@
 # -- use this first stage to build the SvelteKit app --
-FROM node:19-alpine AS builder
+FROM node:20-alpine AS builder
 
 # copy everything to the container
 WORKDIR /app
@@ -16,7 +16,7 @@ RUN npm run build
 
 
 # -- SvelteKit stage --
-FROM node:19-alpine
+FROM node:20-alpine
 
 # set environment variables
 ENV PORT=9000
